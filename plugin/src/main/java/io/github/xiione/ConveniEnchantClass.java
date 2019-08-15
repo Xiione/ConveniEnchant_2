@@ -43,7 +43,8 @@ public class ConveniEnchantClass implements Listener, CommandExecutor, TabComple
 
     private final ConveniEnchant plugin;
     private final TableManager manager;
-    private final double PLUGIN_VERSION = 1.2;
+    private final double PLUGIN_VERSION = 2.0;
+
 
     private int item_level_default, item_exp_default, item_lapis_default, level_cap_default, exp_gained_modifier, levels_gained_cap;
     int crafting_output_amount;
@@ -309,8 +310,8 @@ public class ConveniEnchantClass implements Listener, CommandExecutor, TabComple
         if (manager.isUsingTable(u)) {
             int tableLevel = manager.getTableLevel(u);
             calculateLevels(tableLevel, e);
-            if (hide_enchant_hints) {
-                TooltipClearer clearer = this.getTooltipClearer();
+            if (hide_enchant_hints) { //if hiding tooltips is enabled
+                TooltipClearer clearer = this.getTooltipClearer();  //load correct NMS methods
                 if(clearer != null)
                     clearer.clearTooltips(plugin, e);
             }
@@ -320,14 +321,7 @@ public class ConveniEnchantClass implements Listener, CommandExecutor, TabComple
 
     private TooltipClearer getTooltipClearer() {
         try {
-            String version;
-            try {
-
-                version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
-            } catch (ArrayIndexOutOfBoundsException e) {
-                return null;
-            }
-            final Class<?> aClass = Class.forName("io.github.xiione.nms." + version + ".TooltipClearer");
+            final Class<?> aClass = Class.forName("io.github.xiione.nms." + (plugin.version + ".TooltipClearer"));
             // Check if we have a NMSHandler class at that location.
             if (TooltipClearer.class.isAssignableFrom(aClass)) { // Make sure it actually implements NMS
                 return (TooltipClearer) aClass.getConstructor().newInstance(); // Set our handler

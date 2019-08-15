@@ -15,6 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class ConveniEnchant extends JavaPlugin {
 
     private final TableManager tableManager = new TableManager(this);
+    public String version;
 
     @Override
     public void onEnable() {
@@ -22,6 +23,14 @@ public class ConveniEnchant extends JavaPlugin {
         final ConveniEnchantClass conveniEnchantClass = new ConveniEnchantClass(this, tableManager);
         this.saveDefaultConfig();
         ConfigUpdater.updateConfig(this);
+
+        try{
+            this.getLogger().info("Package name = " + Bukkit.getServer().getClass().getPackage().getName());
+            version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+            this.getLogger().info("Loading NMS support for version " + version + "...");
+        } catch(ArrayIndexOutOfBoundsException e) {
+            this.getLogger().warning("Failed to load NMS support!");
+        }
 
         this.getCommand("convenienchant").setExecutor(conveniEnchantClass);
 
