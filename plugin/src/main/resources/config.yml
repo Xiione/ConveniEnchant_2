@@ -1,0 +1,95 @@
+#Default configuration with extra comments available at https://spigotmc.org/wiki/convenienchant-config
+
+#Should the plugin check for a newer version on enable?
+#Players with the proper permissions will be notified on join.
+notify-update: true
+
+## Table Config ##
+
+#Should an enchanting table be placed at the location where the table item is placed?
+place-table-block: true
+
+#What should the default values for a crafted table be?
+item-level-default: 0
+item-exp-default: 0
+item-lapis-default: 0
+
+#What should the default maximum bookshelf-level be?
+level-cap-default: 15
+
+#How many levels should be required to reach the default (safe) bookshelf-level of 15?
+exp-gained-modifier: 5
+
+#How many levels should the table be allowed to gain per enchant?
+levels-gained-cap: 1
+
+#Should a sound be played when the table levels up?
+#Find the Spigot sound enums here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html
+level-up-playsound: true
+level-up-sound: "ENTITY_PLAYER_LEVELUP"
+level-up-sound-volume: 1.0
+level-up-sound-pitch: 1.0
+
+#Should the "(Enchantment) (level)...?" hover tooltip be disabled in the enchanting GUI of placed tables?
+hide-enchant-hints: true
+
+#Should the table save the amount of Lapis Lazuli left in its slot when the GUI is closed?
+allow-lapis-storage: true
+
+#Should the plugin attempt to return the table item directly to the enchanter's inventory when the enchanting GUI is closed?
+#If set to false, the table will drop as an item at the placed table or the player's location when the GUI is closed.
+return-table-item: true
+
+
+## Display Config##
+
+#What should be the default display name for the table item? Color codes are accepted.
+#The name is automatically set when the table is crafted and when the enchanting GUI is closed.
+item-display-name: "&eEnchanting Table"
+
+#What should be the default lore format for the table item? Color codes are accepted.
+#Similarly to the display name, the lore is automatically updated when the enchanting GUI is closed.
+
+item-lore:
+  - "&7Level &f%level%"
+  - "&f%lapis%&7x Lapis Lazuli"
+  - "&f%exp_progress%&7% experience"
+
+#What should the material of the table item be?
+#Find the Spigot material enums here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+item-material: "PLAYER_HEAD"
+
+#What should the table item's head texture be?
+#Only applies if item-material is "PLAYER_HEAD".
+item-head-uuid: "1e3e760a-4c93-4607-96d4-79963a5391f2"
+item-head-texture-string: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjJmNzkwMTZjYWQ4NGQxYWUyMTYwOWM0ODEzNzgyNTk4ZTM4Nzk2MWJlMTNjMTU2ODI3NTJmMTI2ZGNlN2EifX19"
+
+
+## Crafting Config ##
+
+#NOTE: Crafting configs will not be reloaded with /convenienchant reload, as custom crafting recipes are loaded on server start.
+
+#Should the table item be able to be crafted?
+allow-crafting: true
+
+#How should the item be crafted?
+recipe-toprow: " B "
+recipe-middle: " T "
+recipe-bottom: " C "
+
+#How many of the item should be given when the item is crafted?
+crafting-output-amount: 1
+
+#What characters should represent what Materials in the above recipe?
+#For an empty slot, simply use a space.
+recipe-ingredients:
+  - "B,EXPERIENCE_BOTTLE"
+  - "T,ENCHANTING_TABLE"
+  - "C,CHEST"
+
+
+## Misc Config ##
+
+#Should players in survival mode be able to equip the item as armor?
+#Only applies if item-material can be worn in the head slot (e.g. PLAYER_HEAD).
+item-allow-equip: false

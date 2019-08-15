@@ -1,0 +1,17 @@
+name: ConveniEnchant
+version: 1.2
+author: Xiione
+api-version: 1.13
+main: io.github.xiione.ConveniEnchant
+
+commands:
+  convenienchant:
+    description: Main command
+
+permissions:
+  covenienchant.use:
+    default: true
+  convenienchant.admin:
+    default: op
+  convenienchant.notifyupdate:
+    default: op
