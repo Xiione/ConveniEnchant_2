@@ -61,7 +61,6 @@ public class ConveniEnchantClass implements Listener, CommandExecutor, TabComple
     void loadConfigs(boolean reload) { //load config values
         FileConfiguration config = plugin.getConfig();
         plugin.saveDefaultConfig(); //create the config if it does not exist
-        ConfigUpdater.updateConfig(plugin); //add any missing fields
         if (reload) {
             plugin.reloadConfig(); //if being issued via command, reload config values
         }
@@ -101,7 +100,7 @@ public class ConveniEnchantClass implements Listener, CommandExecutor, TabComple
 
     @EventHandler
     public void armorEquip(ArmorEquipEvent e) {
-        if (!item_allow_equip && e.getPlayer().getGameMode() != GameMode.CREATIVE && e.getNewArmorPiece().getType() == Material.PLAYER_HEAD) { //Prevent table item from being equipped as headgear
+        if (!item_allow_equip && e.getPlayer().getGameMode() != GameMode.CREATIVE && e.getNewArmorPiece().getType() == item_material) { //Prevent table item from being equipped as headgear
             ItemStack i = e.getNewArmorPiece(); //May be worth writing own handlers to reduce size TODO Write own handlers for head equip
             NBTItem n = new NBTItem(i);
             if (n.hasKey("CONVENIENCHANT_EXP")) e.setCancelled(true);

@@ -22,7 +22,6 @@ public class ConveniEnchant extends JavaPlugin {
 
         final ConveniEnchantClass conveniEnchantClass = new ConveniEnchantClass(this, tableManager);
         this.saveDefaultConfig();
-        ConfigUpdater.updateConfig(this);
 
         try{
             this.getLogger().info("Package name = " + Bukkit.getServer().getClass().getPackage().getName());
